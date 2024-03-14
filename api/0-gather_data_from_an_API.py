@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import requests
+"""New module based around handlings requests to url"""
 
 def request(employee_id):
+	"""function that defines url and sends request to said url"""
 	base_url = "https://jsonplaceholder.typicode.com"
 	todo_url = f"{base_url}/todos?userId={employee_id}"
 
