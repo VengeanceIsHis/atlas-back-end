@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" New module based around handlings requests to url """
+"""New module based around handlings requests to url"""
 import requests
 
 def request(employee_id):
