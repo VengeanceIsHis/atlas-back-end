@@ -9,7 +9,7 @@ def request(employee_id):
     todo_url = f"{base_url}/todos?userId={employee_id}"
 
     try:
-    # Fetch TODO list for the user
+        # Fetch TODO list for the user
         response = requests.get(todo_url)
         todos = response.json()
 
@@ -26,7 +26,6 @@ def request(employee_id):
             print(f"Employee ID: {employee_id}")
             print(f"Total tasks: {total_tasks}")
             print(f"Completed tasks: {completed_tasks}")
-            print(f"Progress: {completed_tasks}/{total_tasks} ({(completed_tasks / total_tasks) * 100:.2f}%)")
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching TODO list: {e}")
