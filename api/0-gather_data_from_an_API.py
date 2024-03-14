@@ -30,7 +30,6 @@ def request(employee_id):
             total_tasks = len(todos)
             num_completed_tasks = len(completed_tasks)
 
-            print(f"Employee {employee_name} is done with tasks ({num_completed_tasks}/{total_tasks}):")
             print(f"{employee_name}:")
             for task_title in completed_tasks:
                 print(f"\t{task_title}")
