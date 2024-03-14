@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+""" New module based around handlings requests to url """
 import requests
-"""New module based around handlings requests to url"""
 
 def request(employee_id):
 	"""function that defines url and sends request to said url"""
