@@ -1,27 +1,33 @@
 #!/usr/bin/python3
-"""New module based around handlings requests to url"""
+""" Module for retrieving employee TODO list information using an API """
+
 import requests
 import sys
 
 
-if __name__ == "__main__":
-    # Base URL for the JSONPlaceholder API
-    url = "https://jsonplaceholder.typicode.com/"
+def fetch_employee_todo_progress(employee_id):
+    """ Function to fetch and display employee TODO list progress """
+    base_url = "https://jsonplaceholder.typicode.com"
+    employee_url = "{}/users/{}".format(base_url, employee_id)
+    todo_url = "{}/todos".format(base_url)
 
-    # Get the employee information using the provided employee ID
-    employee_id = sys.argv[1]
-    user = requests.get(url + "users/{}".format(employee_id)).json()
+    employee_data = requests.get(employee_url).json()
+    employee_name = employee_data['name']
+    todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
 
-    # Get the to-do list for the employee using the provided employee ID
-    params = {"userId": employee_id}
-    todos = requests.get(url + "todos", params).json()
+    completed_tasks = []
+    total_tasks = 0
+    for todo in todo_list:
+        total_tasks += 1
+        if todo["completed"]:
+            completed_tasks.append(todo["title"])
 
-    # Filter completed tasks and count them
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-
-    # Print the employee's name and the number of completed tasks
     print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
+        employee_name, len(completed_tasks), total_tasks))
+    
+    for task_title in completed_tasks:
+        print("\t{}".format(task_title))
 
-    # Print the completed tasks one by one with indentation
-    [print("\t {}".format(complete)) for complete in completed]
+if __name__ == "__main__":
+    employee_id = int(sys.argv[1])
+    fetch_employee_todo_progress(employee_id)
