@@ -10,3 +10,19 @@ if __name__ == "__main__":
  employee_id = sys.argv[1]
 
  response = requests.get(url + "users/{}".format(employee_id))
+
+ user = response.json()
+
+ param = {"user.id": employee_id}
+
+ todos = requests.get(url + "todos", params=param)
+
+ todo = todos.json()
+
+ complete = []
+
+ for todo in todos:
+  if todo.get("completed") is True:
+   complete.append(todo.get("title"))
+
+ print("Employee {} is done with tasks({}/{})".format(user.get("name"), len(complete), len(todos)))
