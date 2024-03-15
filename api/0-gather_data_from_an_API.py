@@ -2,6 +2,8 @@
 """New module based around handlings requests to url"""
 import requests
 import sys
+
+
 def new_data_from_api(employee_id):
     url = "https://jsonplaceholder.typicode.com/"
 
