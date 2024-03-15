@@ -2,9 +2,7 @@
 """New module based around handlings requests to url"""
 import requests
 import sys
-
-
-if __name__ == "__main__":
+def new_data_from_api(employee_id):
     url = "https://jsonplaceholder.typicode.com/"
 
     employee_id = sys.argv[1]
