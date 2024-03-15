@@ -17,3 +17,4 @@ def new_data_from_api(employee_id):
         user.get("name"), len(completed), len(todos)))
 
     [print("\t {}".format(complete)) for complete in completed]
+    return (employee_id)
