@@ -26,4 +26,4 @@ if __name__ == "__main__":
    complete.append(todo.get("title"))
 
  print("Employee {} is done with tasks".format(user.get("name")))
- print("{}/{}".format(len(complete), len(todos))
+ print("{}/{}".format(len(complete), len(todos)))
