@@ -22,7 +22,7 @@ def get_employee_todo(employee_id):
 
     # Print the employee's name and the number of completed tasks
     print("Employee {} is done with tasks({}/{}):".format(
-        "employee"), len(completed), len(todos)))
+        "employee"), len(completed), len(todos))
 
     # Print the completed tasks one by one with indentation
     [print("\t {}".format(complete)) for complete in completed]
