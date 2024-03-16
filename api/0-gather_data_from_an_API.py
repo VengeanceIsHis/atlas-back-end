@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Module for retrieving employee TODO list information using an API """
 
-import sys
 import json
+import sys
 import urllib.request
 
 
