@@ -4,6 +4,7 @@
 import requests
 import sys
 
+
 def fetch_employee_todo_progress(employee_id):
     """ Function to fetch and display employee TODO list progress """
     base_url = "https://jsonplaceholder.typicode.com"
@@ -23,9 +24,10 @@ def fetch_employee_todo_progress(employee_id):
 
     print("Employee {} is done with tasks({}/{}):".format(
         employee_name, len(completed_tasks), total_tasks))
-    
+
     for task_title in completed_tasks:
         print("\t{}".format(task_title))
+
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
