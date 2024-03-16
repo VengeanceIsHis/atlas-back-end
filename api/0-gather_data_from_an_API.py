@@ -9,6 +9,7 @@ if __name__ == "__main__":
 
     # Get the employee information using the provided employee ID
     employee_id = sys.argv[1]
+    employee_name = requests.get("name")
     user = requests.get(url + "users/{}".format(employee_id)).json()
 
     # Get the to-do list for the employee using the provided employee ID
