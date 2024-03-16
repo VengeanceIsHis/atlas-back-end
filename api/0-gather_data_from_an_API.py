@@ -16,7 +16,8 @@ def fetch_employee_todo_progress(employee_id):
 
     employee_name = employee_data['name']
 
-    with urllib.request.urlopen(todo_url + "?userId=" + str(employee_id)) as response:
+    todo_url_with_params = "{}?userId={}".format(todo_url, employee_id)
+    with urllib.request.urlopen(todo_url_with_params) as response:
         todo_list = json.loads(response.read().decode())
 
     completed_tasks = []
