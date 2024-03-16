@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ Module for retrieving employee TODO list information using an API """
 
-import requests
 import sys
-
+import json
+import urllib.request
 
 def fetch_employee_todo_progress(employee_id):
     """ Function to fetch and display employee TODO list progress """
@@ -11,9 +11,13 @@ def fetch_employee_todo_progress(employee_id):
     employee_url = "{}/users/{}".format(base_url, employee_id)
     todo_url = "{}/todos".format(base_url)
 
-    employee_data = requests.get(employee_url).json()
+    with urllib.request.urlopen(employee_url) as response:
+        employee_data = json.loads(response.read().decode())
+
     employee_name = employee_data['name']
-    todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
+
+    with urllib.request.urlopen(todo_url + "?userId=" + str(employee_id)) as response:
+        todo_list = json.loads(response.read().decode())
 
     completed_tasks = []
     total_tasks = 0
