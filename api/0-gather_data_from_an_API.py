@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Adding module documentation"""
 import requests
 import sys
 
