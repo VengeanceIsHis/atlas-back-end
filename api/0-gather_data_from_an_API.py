@@ -3,7 +3,7 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
+def get_employee_todo(employee_id):
     # Base URL for the JSONPlaceholder API
     url = "https://jsonplaceholder.typicode.com/"
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     # Get the to-do list for the employee using the provided employee ID
     params = {"userId": employee_id}
-    todos = requests.get(url + "todos", params).json()
+    todos = requests.get(url + "todos", params={"userId": employee_id}).json()
 
     # Filter completed tasks and count them
     completed = [t.get("title") for t in todos if t.get("completed") is True]
@@ -25,3 +25,6 @@ if __name__ == "__main__":
 
     # Print the completed tasks one by one with indentation
     [print("\t {}".format(complete)) for complete in completed]
+
+
+if __name__ == "__main__":
