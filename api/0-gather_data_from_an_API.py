@@ -5,6 +5,7 @@ import sys
 import json
 import urllib.request
 
+
 def fetch_employee_todo_progress(employee_id):
     """ Function to fetch and display employee TODO list progress """
     base_url = "https://jsonplaceholder.typicode.com"
@@ -35,4 +36,3 @@ def fetch_employee_todo_progress(employee_id):
 
 
 if __name__ == "__main__":
-    employee_id = int(sys.argv[1])
