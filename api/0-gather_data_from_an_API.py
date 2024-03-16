@@ -9,7 +9,6 @@ def get_employee_todo(employee_id):
     url = "https://jsonplaceholder.typicode.com/"
 
     # Get the employee information using the provided employee ID
-    employee_id = sys.argv[1]
     employee_name = requests.get("name")
     user = requests.get(url + "users/{}".format(employee_id)).json()
 
@@ -29,4 +28,4 @@ def get_employee_todo(employee_id):
 
 
 if __name__ == "__main__":
-    employee_id = sys.argv[1]
+    employee_id = (int(sys.argv[1]))
