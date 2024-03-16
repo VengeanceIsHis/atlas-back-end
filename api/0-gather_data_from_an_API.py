@@ -30,4 +30,3 @@ def get_employee_todo(employee_id):
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    employee_id -= 1
