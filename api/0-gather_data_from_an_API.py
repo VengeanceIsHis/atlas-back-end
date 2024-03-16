@@ -11,6 +11,7 @@ def get_employee_todo(employee_id):
     # Get the employee information using the provided employee ID
     employee_name = requests.get("name")
     user = requests.get(url + "users/{}".format(employee_id)).json()
+    employee = user['name']
 
     # Get the to-do list for the employee using the provided employee ID
     params = {"userId": employee_id}
@@ -21,7 +22,7 @@ def get_employee_todo(employee_id):
 
     # Print the employee's name and the number of completed tasks
     print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
+        "employee"), len(completed), len(todos)))
 
     # Print the completed tasks one by one with indentation
     [print("\t {}".format(complete)) for complete in completed]
