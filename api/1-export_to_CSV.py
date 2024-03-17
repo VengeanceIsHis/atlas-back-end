@@ -3,8 +3,8 @@
 
 import csv
 import requests
-import sys
 import os
+import sys
 
 
 def user_info(id):
