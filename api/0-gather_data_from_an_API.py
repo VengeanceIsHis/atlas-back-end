@@ -3,6 +3,7 @@
 import requests
 import sys
 
+
 def retrieve_employee_name(emp_id):
     """
     Retrieves the name of the employee.
@@ -11,6 +12,7 @@ def retrieve_employee_name(emp_id):
     response = requests.get(url)
     return response.json().get("name")
 
+
 def retrieve_assigned_tasks(emp_id):
     """
     Retrieves the total number of tasks assigned to the employee.
@@ -18,6 +20,7 @@ def retrieve_assigned_tasks(emp_id):
     url = "{}/{}/todos".format(base_url, emp_id)
     response = requests.get(url)
     return len(response.json())
+
 
 def retrieve_completed_tasks(emp_id):
     """
@@ -31,6 +34,7 @@ def retrieve_completed_tasks(emp_id):
             completed_tasks.append(task.get("title"))
     return completed_tasks
 
+
 def print_employee_progress(emp_name, completed_tasks, assigned_tasks):
     """
     Prints the employee's task list progress.
@@ -40,6 +44,7 @@ def print_employee_progress(emp_name, completed_tasks, assigned_tasks):
                                                           assigned_tasks))
     for task in completed_tasks:
         print("\t {}".format(task))
+
 
 if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com/users"
