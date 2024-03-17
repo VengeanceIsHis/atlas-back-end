@@ -2,8 +2,8 @@
 """Exports to-do list information for a given employee ID to CSV format."""
 
 import csv
-import requests
 import os
+import requests
 import sys
 
 
