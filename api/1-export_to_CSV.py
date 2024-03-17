@@ -4,6 +4,15 @@
 import csv
 import requests
 import sys
+import os
+
+
+def user_info(id):
+    if os.path.exists(str(id) + ".csv"):
+        with open(str(id) + ".csv", 'r') as f:
+            print(f.read())
+    else:
+        print("The file doesn't exist.")
 
 
 if __name__ == "__main__":
