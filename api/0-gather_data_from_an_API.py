@@ -1,55 +1,34 @@
 #!/usr/bin/python3
-"""Next test for task 0"""
+"""
+Returns to-do list information for a given employee ID.
+
+This script takes an employee ID as a command-line argument and fetches
+the corresponding user information and to-do list from the JSONPlaceholder API.
+It then prints the tasks completed by the employee.
+"""
+
 import requests
 import sys
 
 
-def retrieve_employee_name(emp_id):
-    """
-    Retrieves the name of the employee.
-    """
-    url = "{}/{}".format(base_url, emp_id)
-    response = requests.get(url)
-    return response.json().get("name")
-
-
-def retrieve_assigned_tasks(emp_id):
-    """
-    Retrieves the total number of tasks assigned to the employee.
-    """
-    url = "{}/{}/todos".format(base_url, emp_id)
-    response = requests.get(url)
-    return len(response.json())
-
-
-def retrieve_completed_tasks(emp_id):
-    """
-    Retrieves the list of tasks completed by the employee.
-    """
-    completed_tasks = []
-    url = "{}/{}/todos".format(base_url, emp_id)
-    response = requests.get(url)
-    for task in response.json():
-        if task.get("completed"):
-            completed_tasks.append(task.get("title"))
-    return completed_tasks
-
-
-def print_employee_progress(emp_name, completed_tasks, assigned_tasks):
-    """
-    Prints the employee's task list progress.
-    """
-    print("Employee {} is done with tasks({}/{}):".format(emp_name,
-                                                          len(completed_tasks),
-                                                          assigned_tasks))
-    for task in completed_tasks:
-        print("\t {}".format(task))
-
-
 if __name__ == "__main__":
-    base_url = "https://jsonplaceholder.typicode.com/users"
-    emp_id = sys.argv[1]
-    emp_name = retrieve_employee_name(emp_id)
-    assigned_tasks = retrieve_assigned_tasks(emp_id)
-    completed_tasks = retrieve_completed_tasks(emp_id)
-    print_employee_progress(emp_name, completed_tasks, assigned_tasks)
+    # Base URL for the JSONPlaceholder API
+    url = "https://jsonplaceholder.typicode.com/"
+
+    # Get the employee information using the provided employee ID
+    employee_id = sys.argv[1]
+    user = requests.get(url + "users/{}".format(employee_id)).json()
+
+    # Get the to-do list for the employee using the provided employee ID
+    params = {"userId": employee_id}
+    todos = requests.get(url + "todos", params).json()
+
+    # Filter completed tasks and count them
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+
+    # Print the employee's name and the number of completed tasks
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+
+    # Print the completed tasks one by one with indentation
+    [print("\t {}".format(complete)) for complete in completed]
