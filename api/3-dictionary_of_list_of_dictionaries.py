@@ -51,7 +51,6 @@ if __name__ == "__main__":
 
     data_to_export = fetch_user_data()
 
-
     # Write the data to a JSON file
 
     with open("todo_all_employees.json", "w") as jsonfile:
