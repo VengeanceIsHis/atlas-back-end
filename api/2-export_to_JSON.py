@@ -10,9 +10,7 @@ if __name__ == "__main__":
 
     user_id = sys.argv[1]
 
-
     url = "https://jsonplaceholder.typicode.com/"
-
 
     user = requests.get(url + "users/{}".format(user_id)).json()
 
@@ -22,4 +20,3 @@ if __name__ == "__main__":
 
     with open("{}.json".format(user_id), "w", newline="") as jsonfile:
         json.dump(todos, jsonfile)
-
