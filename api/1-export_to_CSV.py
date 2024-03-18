@@ -6,15 +6,6 @@ import os
 import requests
 import sys
 
-
-def user_info(id):
-    if os.path.exists(str(id) + ".csv"):
-        with open(str(id) + ".csv", 'r') as f:
-            print(f.read())
-    else:
-        print("The file doesn't exist.")
-
-
 if __name__ == "__main__":
     # Get the user ID from the command-line arguments provided to the script
     user_id = sys.argv[1]
