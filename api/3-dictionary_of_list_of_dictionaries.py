@@ -3,6 +3,7 @@
 import json
 import requests
 
+
 def fetch_user_data():
     """Fetch user information and to-do lists for all employees."""
     # Base URL for the JSONPlaceholder API
